@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siva M - Resume | AI & Software Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+            transition: all 0.3s ease;
+            margin: 0 auto;
+        }
+
+        .profile-picture:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease;
+            text-align: center;
+            min-width: fit-content;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #f39c12;
+            text-shadow: 0 0 5px rgba(243, 156, 18, 0.3);
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+            transition: width 0.3s ease;
+        }
+
+        .section:hover h2::after {
+            width: 100px;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            border-left: 4px solid #3498db;
+            background: #f8f9fa;
+            border-radius: 0 10px 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover, .education-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-title, .degree {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+
+        .company, .school {
+            font-weight: 500;
+            color: #3498db;
+            margin-bottom: 0.3rem;
+        }
+
+        .date {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .description {
+            margin-top: 0.5rem;
+        }
+
+        .description ul {
+            padding-left: 1.2rem;
+        }
+
+        .description li {
+            margin-bottom: 0.3rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: #3498db;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 2rem 1rem;
+            }
+
+            .profile-picture {
+                width: 120px;
+                height: 120px;
+                font-size: 2.5rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .download-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .download-btn:disabled {
+            cursor: not-allowed;
+            background: #bdc3c7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="profile-section">
+                <img src="image.png" 
+                     alt="Siva M Profile Picture" 
+                     class="profile-picture">
+                
+                <div class="header-info">
+                    <h1>Siva M</h1>
+                    <p>Engineering Student | Aspiring AI & Software Engineer</p>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>sivam.ug22.ad@francisxavier.ac.in</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>+91 6385790459</span>
+                </div>
+                <div class="contact-item">
+                    <span>🎓</span>
+                    <span>Francis Xavier Engineering College</span>
+                </div>
+                <br>
+               <div class="contact-item">
+                    <a href="https://www.linkedin.com/in/siva075/" target="_blank">
+                    <img src="image.jpg" alt="LinkedIn Profile" style="width: 50px; height: 50px; border-radius: 50%;">
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <section class="section">
+                <h2>About Me</h2>
+                <p class="about-text">
+                    I am a passionate Engineering Student at Francis Xavier Engineering College with a strong focus on 
+                    Artificial Intelligence and Software Engineering. I have hands-on experience in full-stack development, 
+                    machine learning, and data analytics. My technical expertise spans across multiple programming languages 
+                    and modern development frameworks. I'm particularly enthusiastic about leveraging AI technologies to 
+                    solve real-world problems and am constantly exploring new tools and technologies in the rapidly evolving 
+                    field of artificial intelligence.
+                </p>
+                 <a href="resume.jpg" download="My_Resume.jpg" class="download-btn">Download Resume</a>
+            </section>
+
+            <section class="section">
+                <h2>Awards & Certifications</h2>
+                
+                <div class="experience-item">
+                    <div class="job-title">🏆 1st Place - AI Product Demo Competition</div>
+                    <div class="company">NEC TECH FEST 2K25, National Engineering College</div>
+                    <div class="date">March 2025</div>
+                    <div class="description">
+                        Won first place with team for AI-driven innovation showcase and participated in Gen AI for Web Solutions workshop.
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">📜 NPTEL Elite Certificate - Industry 4.0 & Industrial IoT</div>
+                    <div class="company">IIT Kharagpur | Score: 72% | 3 Credits</div>
+                    <div class="date">Jan - Apr 2025</div>
+                    <div class="description">
+                        Completed 12-week certification on manufacturing automation, connectivity, and smart systems transformation.
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">🎯 SRISHTI 2025 - National Technical Project Exhibition</div>
+                    <div class="company">Saintgits College of Engineering, Kerala</div>
+                    <div class="date">February 2025</div>
+                    <div class="description">
+                        Presented "Agron AI" project focusing on sustainable and inclusive future innovations at national-level competition.
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">🔬 Research Paper Presentation - "Harmful Brain Activity Classification"</div>
+                    <div class="company">ICICIC'25 International Conference, Francis Xavier Engineering College</div>
+                    <div class="date">April 2025</div>
+                    <div class="description">
+                        Presented cutting-edge research on brain activity classification at 5th International Conference on Computational Intelligence.
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">🤖 Machine Learning Internship Certification</div>
+                    <div class="company">Indian Servers Private Limited, Vijayawada</div>
+                    <div class="date">Sep - Nov 2023 (8 weeks)</div>
+                    <div class="description">
+                        Completed comprehensive ML training in NLP, text preprocessing, GPT/BERT fine-tuning, OpenAI/Hugging Face APIs, and Dialogflow chatbot development.
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">💻 FX HACK 23 - 24-Hour Internal Hackathon</div>
+                    <div class="company">Francis Xavier Engineering College</div>
+                    <div class="date">October 2023</div>
+                    <div class="description">
+                        Participated in intensive software/hardware hackathon, demonstrating problem-solving and innovation skills.
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">🛡️ AI Cybersecurity Workshop & Hackathon 4.0</div>
+                    <div class="company">Ideation & Web Apps Industrial Applied Labs</div>
+                    <div class="date">2023</div>
+                    <div class="description">
+                        Explored AI-driven cybersecurity solutions and designed secure AI-powered Telegram bots.
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">📊 Data Handling & Machine Learning Training + Datathon</div>
+                    <div class="company">Ideation Industrial Applied Labs</div>
+                    <div class="date">2023</div>
+                    <div class="description">
+                        Completed Level 1 ML training and participated in Datathon Hackathon 3.0 for advanced data science skills.
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">🔧 Tinkercad Circuit Design Training (10 Hours)</div>
+                    <div class="company">Applied Lab Technical Training</div>
+                    <div class="date">Jan - Feb 2023</div>
+                    <div class="description">
+                        Enhanced circuit design, simulation, and prototyping skills through hands-on project-based learning.
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">📝 TECHNOPHILIA 23 - Paper Presentation</div>
+                    <div class="company">Anna University Regional Campus, Tirunelveli</div>
+                    <div class="date">2023</div>
+                    <div class="description">
+                        Presented research paper on "Immersive Technology" at national-level symposium.
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Projects & Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="job-title">Autonomous Agricultural Rover with Robotic Arm</div>
+                    <div class="company">Current Project</div>
+                    <div class="date">2024 - Present</div>
+                    <div class="description">
+                        <ul>
+                            <li>Developing an autonomous agricultural rover equipped with a precision robotic arm for farming applications</li>
+                            <li>Programming microcontrollers using Raspberry Pi for advanced processing and motor control systems</li>
+                            <li>Integrating Raspberry Pi webcam for real-time computer vision and crop monitoring</li>
+                            <li>Implementing machine learning algorithms for crop detection and automated harvesting tasks</li>
+                            <li>Developing IoT sensor networks for environmental data collection and analysis</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">AI/ML Research Paper Presentation</div>
+                    <div class="company">Academic Research</div>
+                    <div class="date">2025</div>
+                    <div class="description">
+                        <ul>
+                            <li>Presented research paper titled "Harmful Brain Activity Classification" at academic conference</li>
+                            <li>Developed machine learning models for brain activity pattern recognition and classification</li>
+                            <li>Applied advanced data preprocessing techniques for neurological data analysis</li>
+                            <li>Collaborated with faculty and researchers to validate classification algorithms</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">AI/ML Engineering Internship</div>
+                    <div class="company">Indian Servers Private Limited, Vijayawada</div>
+                    <div class="date">Sep - Nov 2023</div>
+                    <div class="description">
+                        <ul>
+                            <li>Gained hands-on experience in Natural Language Processing (NLP) and text preprocessing techniques</li>
+                            <li>Fine-tuned advanced AI models including GPT and BERT for specific use cases</li>
+                            <li>Integrated OpenAI and Hugging Face APIs for production-ready AI applications</li>
+                            <li>Developed intelligent chatbots using Google Dialogflow for enhanced user interactions</li>
+                            <li>Implemented end-to-end ML pipelines for real-world business applications</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">AI-Powered Web Application</div>
+                    <div class="company">Personal Project</div>
+                    <div class="date">2024</div>
+                    <div class="description">
+                        <ul>
+                            <li>Developed a full-stack web application integrating machine learning models</li>
+                            <li>Utilized Hugging Face transformers for natural language processing features</li>
+                            <li>Implemented responsive frontend using JavaScript and modern frameworks</li>
+                            <li>Created RESTful APIs using Python for seamless data integration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">IoT Smart Home System</div>
+                    <div class="company">Academic Project</div>
+                    <div class="date">2023 - 2024</div>
+                    <div class="description">
+                        <ul>
+                            <li>Designed and built an IoT-based home automation system using Arduino</li>
+                            <li>Programmed microcontrollers using Arduino IDE for sensor integration</li>
+                            <li>Implemented data analytics dashboard for monitoring home environment</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Education</h2>
+                
+                <div class="education-item">
+                    <div class="degree">Bachelor of Engineering</div>
+                    <div class="school">Francis Xavier Engineering College</div>
+                    <div class="date">2022 - 2026 (Expected)</div>
+                    <div class="description">
+                        Relevant coursework: Data Structures, Algorithms, Artificial Intelligence, Machine Learning, 
+                        Software Engineering, Database Systems, Object-Oriented Programming, Web Technologies
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">C</span>
+                            <span class="skill-tag">OOP</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>AI & Machine Learning</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">NLP</span>
+                            <span class="skill-tag">GPT Fine-tuning</span>
+                            <span class="skill-tag">BERT</span>
+                            <span class="skill-tag">OpenAI API</span>
+                            <span class="skill-tag">Hugging Face</span>
+                            <span class="skill-tag">Dialogflow</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Web Development</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Full-Stack Development</span>
+                            <span class="skill-tag">Web Development</span>
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">Responsive Design</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Tools & Platforms</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">Raspberry Pi</span>
+                            <span class="skill-tag">Arduino IDE</span>
+                            <span class="skill-tag">IoT</span>
+                            <span class="skill-tag">Computer Vision</span>
+                            <span class="skill-tag">Autodesk Fusion 360</span>
+                            <span class="skill-tag">Autodesk Tinkercad</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Resume Image Storage
+        let resumeImageData = null;
+        let resumeFileName = null;
+
+        // Resume Image Upload Function
+        function handleResumeUpload() {
+            const fileInput = document.getElementById('resume-upload');
+            const uploadStatus = document.getElementById('upload-status');
+            const downloadBtn = document.getElementById('download-btn');
+            
+            fileInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        resumeImageData = e.target.result;
+                        resumeFileName = file.name;
+                        
+                        // Update status
+                        uploadStatus.innerHTML = `✅ <span style="color: #27ae60;">Resume uploaded: ${file.name}</span>`;
+                        
+                        // Enable download button
+                        downloadBtn.disabled = false;
+                        downloadBtn.style.opacity = '1';
+                        downloadBtn.style.cursor = 'pointer';
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    uploadStatus.innerHTML = `❌ <span style="color: #e74c3c;">No file selected</span>`;
+                    downloadBtn.disabled = true;
+                    downloadBtn.style.opacity = '0.5';
+                }
+            });
+        }
+
+        // Download Resume Image Function
+        function downloadResumeImage() {
+            if (resumeImageData && resumeFileName) {
+                // Create download link
+                const link = document.createElement('a');
+                link.href = resumeImageData;
+                link.download = `Siva_M_Resume_${Date.now()}.${resumeFileName.split('.').pop()}`;
+                
+                // Trigger download
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Show success message
+                const uploadStatus = document.getElementById('upload-status');
+                uploadStatus.innerHTML = `🎉 <span style="color: #27ae60;">Resume downloaded successfully!</span>`;
+                
+                setTimeout(() => {
+                    uploadStatus.innerHTML = `✅ <span style="color: #27ae60;">Resume uploaded: ${resumeFileName}</span>`;
+                }, 2000);
+            } else {
+                alert('Please upload a resume image first!');
+            }
+        }
+
+        // Add smooth scrolling and interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize resume upload handler
+            handleResumeUpload();
+            
+            // Animate skill tags on hover
+            const skillTags = document.querySelectorAll('.skill-tag');
+            skillTags.forEach(tag => {
+                tag.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.1) rotate(2deg)';
+                });
+                
+                tag.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+
+            // Add click effect to contact items
+            const contactItems = document.querySelectorAll('.contact-item');
+            contactItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
